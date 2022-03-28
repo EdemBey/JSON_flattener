@@ -3,6 +3,7 @@
 using System.Text.Json;
 using JSON_flattener;
 
-var d = JSON_transformer.GetPropertiesFromJson("test.json");
+var json = args[0] != "" ? args[0] : "test.json";
+var d = JsonTransformer.GetPropertiesFromJson(json);
 
 Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(d, new JsonSerializerOptions { WriteIndented = true }));

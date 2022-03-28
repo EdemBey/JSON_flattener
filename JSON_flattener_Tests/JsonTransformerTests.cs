@@ -1,19 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using JSON_flattener;
-using System;
+﻿using System;
 using System.IO;
+using JSON_flattener;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace JSON_flattener.Tests
+namespace JSON_flattener_Tests
 {
     [TestClass()]
-    public class JSON_transformerTests
+    public class JsonTransformerTests
     {
         [TestMethod()]
         [ExpectedException(typeof(FileNotFoundException))]
         public void GetPropertiesFromJsonTest_FileNotFound()
         {
-            string file_name = "text.json"; //filename misspelled on purpose
-            JSON_transformer.GetPropertiesFromJson(file_name);
+            var file_name = "text.json"; //filename misspelled on purpose
+            JsonTransformer.GetPropertiesFromJson(file_name);
             Assert.Fail();
         }
 
@@ -21,8 +21,8 @@ namespace JSON_flattener.Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GetPropertiesFromJsonTest_FileEmpty()
         {
-            string file_name = "empty_test.json";
-            JSON_transformer.GetPropertiesFromJson(file_name);
+            var file_name = "empty_test.json";
+            JsonTransformer.GetPropertiesFromJson(file_name);
             Assert.Fail();
         }
 
@@ -31,8 +31,8 @@ namespace JSON_flattener.Tests
         public void GetPropertiesFromJsonTest_NotJsonFormat()
         {
             //file used for testing is empty by default
-            string file_name = "notJson_test.json";
-            JSON_transformer.GetPropertiesFromJson(file_name);
+            var file_name = "notJson_test.json";
+            JsonTransformer.GetPropertiesFromJson(file_name);
             Assert.Fail();
         }
 
@@ -40,7 +40,7 @@ namespace JSON_flattener.Tests
         public void GetPropertiesFromJsonTest_Working()
         {
             string file_name = "test.json";
-            var dic= JSON_transformer.GetPropertiesFromJson(file_name);
+            var dic= JsonTransformer.GetPropertiesFromJson(file_name);
             Assert.AreEqual(dic.Count,4);
         }
     }

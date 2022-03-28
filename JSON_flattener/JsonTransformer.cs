@@ -2,28 +2,28 @@
 
 namespace JSON_flattener
 {
-    public static class JSON_transformer
+    public static class JsonTransformer
     {
-        public static Dictionary<string, string> GetPropertiesFromJson(string json_file)
+        public static Dictionary<string, string> GetPropertiesFromJson(string jsonFile)
         {
-            var jobject = new JObject();
-            string json_message;
+            JObject jobject;
+            string jsonMessage;
 
             try
             {
-                json_message = File.ReadAllText(json_file);
+                jsonMessage = File.ReadAllText(jsonFile);
             }
             catch
             {
                 throw new FileNotFoundException("File not found. Check the filename");
             }
 
-            if (json_message.Length == 0)
-                throw new ArgumentOutOfRangeException("json_message", json_message, "Json file is empty");
+            if (jsonMessage.Length == 0)
+                throw new ArgumentOutOfRangeException("jsonFile", jsonMessage, "Json file is empty");
 
             try
             {
-                jobject = JObject.Parse(json_message); //parse to JObject the JSON string
+                jobject = JObject.Parse(jsonMessage); //parse to JObject the JSON string
             }
             catch 
             {
